@@ -1,5 +1,6 @@
 package de.mxro.file;
 
+import java.util.Date;
 import java.util.List;
 
 public interface FileItem {
@@ -24,5 +25,7 @@ public interface FileItem {
     public void create();
 
     public List<FileItem> getChildren();
+
+    public Date lastModified();
 
 }
