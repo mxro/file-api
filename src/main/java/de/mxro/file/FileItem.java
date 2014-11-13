@@ -12,6 +12,13 @@ public interface FileItem {
 
     public FileItem assertFolder(String folderName);
 
+    /**
+     * Returns the file name inclusive the extension.
+     * 
+     * @return
+     */
+    public String getName();
+
     public void setVisible(boolean isVisible);
 
     public void create();
