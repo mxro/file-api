@@ -202,6 +202,29 @@
 
 	</build>
 
+<repositories>
+		<repository>
+			<id>Appjangle Releases</id>
+			<url>http://maven.appjangle.com/appjangle/releases</url>
+		</repository>
+	</repositories>
+
+<developers>
+		<developer>
+			<id>mxro</id>
+			<name>Max Rohde</name>
+			<email>noemail@mxro.de</email>
+			<url>http://www.mxro.de/</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+10</timezone>
+			<organization>pureleap</organization>
+			<organizationUrl>http://pureleap.com</organizationUrl>
+		</developer>
+	</developers>
+
 	<!-- <distributionManagement> <repository> <id>appjangle-releases</id> <url>${repos.appjangle-releases}</url> 
 		</repository> <snapshotRepository> <id>appjangle-snapshots</id> <url>${repos.appjangle-snapshots}</url> 
 		</snapshotRepository> </distributionManagement> <repositories> <repository> 
