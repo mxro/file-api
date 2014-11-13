@@ -1,6 +1,7 @@
 package de.mxro.file.Jre;
 
 import java.io.InputStream;
+import java.util.List;
 
 import de.mxro.file.FileItem;
 
@@ -44,6 +45,12 @@ public class JreFileItem implements FileItem {
     public void create() {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public List<FileItem> getChildren() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
