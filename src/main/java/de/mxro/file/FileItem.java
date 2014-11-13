@@ -10,4 +10,6 @@ public interface FileItem {
 
     public FileItem assertFolder(String folderName);
 
+    public void setVisible(boolean isVisible);
+
 }
