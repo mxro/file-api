@@ -11,9 +11,8 @@
 	<properties>
 		<module.gwtVersion>2.5.1</module.gwtVersion>
 		<module.draftCompile>true</module.draftCompile>
-		<module.clientVersion>0.3.5</module.clientVersion>
 		<module.importedPackages>
-			
+
 			*
 		</module.importedPackages>
 		<module.exportedPackages>
@@ -202,14 +201,14 @@
 
 	</build>
 
-<repositories>
+	<repositories>
 		<repository>
 			<id>Appjangle Releases</id>
 			<url>http://maven.appjangle.com/appjangle/releases</url>
 		</repository>
 	</repositories>
 
-<developers>
+	<developers>
 		<developer>
 			<id>mxro</id>
 			<name>Max Rohde</name>
@@ -230,8 +229,8 @@
 		</snapshotRepository> </distributionManagement> <repositories> <repository> 
 		<id>Appjangle Releases</id> <url>http://maven.appjangle.com/appjangle/releases</url> 
 		</repository> </repositories> -->
-		
-		<scm>
+
+	<scm>
 		<connection>scm:git:git@github.com:mxro/file-api.git</connection>
 		<url>https://github.com/mxro/file-api</url>
 		<developerConnection>scm:git:git@github.com:mxro/file-api.git
