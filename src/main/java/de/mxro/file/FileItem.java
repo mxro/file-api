@@ -28,4 +28,11 @@ public interface FileItem {
 
     public Date lastModified();
 
+    /**
+     * Returns the UTF-8 text content of this file.
+     * 
+     * @return
+     */
+    public String getText();
+
 }
