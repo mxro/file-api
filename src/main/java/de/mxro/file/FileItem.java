@@ -8,4 +8,6 @@ public interface FileItem {
 
     public FileItem getChild(String childName);
 
+    public FileItem assertFolder(String folderName);
+
 }
