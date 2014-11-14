@@ -24,6 +24,8 @@ public interface FileItem {
      */
     public String getName();
 
+    public String getExtension();
+
     public FileItem setVisible(boolean isVisible);
 
     public FileItem create();
