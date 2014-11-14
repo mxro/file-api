@@ -30,6 +30,8 @@ public interface FileItem {
 
     public Date lastModified();
 
+    public String hash();
+
     /**
      * Returns the UTF-8 text content of this file.
      * 
