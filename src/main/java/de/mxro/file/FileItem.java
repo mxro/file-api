@@ -22,9 +22,9 @@ public interface FileItem {
      */
     public String getName();
 
-    public void setVisible(boolean isVisible);
+    public FileItem setVisible(boolean isVisible);
 
-    public void create();
+    public FileItem create();
 
     public List<FileItem> getChildren();
 
@@ -36,5 +36,7 @@ public interface FileItem {
      * @return
      */
     public String getText();
+
+    public FileItem setText(String text);
 
 }
