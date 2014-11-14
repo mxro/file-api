@@ -17,6 +17,8 @@ public interface FileItem {
 
     public FileItem deleteFile(String fileName);
 
+    public FileItem deleteFolder(String folderName);
+
     /**
      * Returns the file name inclusive the extension.
      * 
