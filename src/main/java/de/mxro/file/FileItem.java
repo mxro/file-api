@@ -28,6 +28,8 @@ public interface FileItem {
 
     public FileItem setVisible(boolean isVisible);
 
+    public boolean getVisible();
+
     public FileItem create();
 
     public List<FileItem> getChildren();
