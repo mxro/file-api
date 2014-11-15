@@ -33,7 +33,15 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem assertFolder(final String folderName) {
-        // TODO Auto-generated method stub
+        if (!isDirectory()) {
+            throw new RuntimeException("Cannot create folder for file.");
+        }
+
+        File file2 = new File(file.getAbsolutePath()+"/"+folderName);
+        if (!file2.mkdir()) {
+            throw new RuntimeException("Cannot create folder.")
+        }
+
         return null;
     }
 
