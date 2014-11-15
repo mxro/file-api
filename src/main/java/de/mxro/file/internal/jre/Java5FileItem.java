@@ -90,8 +90,9 @@ public class Java5FileItem implements FileItem {
     public FileItem deleteFolder(final String folderName) {
         final File child = getChildUnsafe(folderName);
 
-        println('try remove '+child);
+        System.out.println("try remove " + child);
         if (!child.delete()) {
+            System.out.println("doneit");
             throw new RuntimeException("Folder [" + child + "] could not be deleted.");
         }
 
