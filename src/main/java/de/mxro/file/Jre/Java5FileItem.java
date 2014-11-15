@@ -24,7 +24,9 @@ public class Java5FileItem implements FileItem {
     @Override
     public FileItem getChild(final String childName) {
         for (final File child : file.listFiles()) {
-
+            if (child.getName().equals(childName)) {
+                return new Java5FileItem(child);
+            }
         }
         return new NotExistentFileItem();
     }
@@ -111,6 +113,11 @@ public class Java5FileItem implements FileItem {
     public FileItem setText(final String text) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public Java5FileItem(final File file) {
+        super();
+        this.file = file;
     }
 
 }
