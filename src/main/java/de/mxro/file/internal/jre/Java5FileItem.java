@@ -120,7 +120,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -153,7 +153,6 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public String hash() {
-
         try {
             return Md5.getMD5Checksum(file);
         } catch (final Exception e) {
@@ -178,6 +177,12 @@ public class Java5FileItem implements FileItem {
         this.file = file;
     }
 
+    /**
+     * Might return a child that does not exist.
+     * 
+     * @param name
+     * @return
+     */
     private final File getChildUnsafe(final String name) {
         return new File(file.getAbsolutePath() + "/" + name);
     }
