@@ -7,9 +7,12 @@ import de.mxro.file.FileItem;
 
 public class NotExistentFileItem implements FileItem {
 
+    final private static String ILLEGAL_ACCESS = "Cannot access property of non-existent file.";
+    final private static String ILLEGAL_OPERATION = "Cannot perform operation on non-existent file";
+
     @Override
     public boolean isDirectory() {
-        return false;
+        throw new RuntimeException(ILLEGAL_ACCESS);
     }
 
     @Override
