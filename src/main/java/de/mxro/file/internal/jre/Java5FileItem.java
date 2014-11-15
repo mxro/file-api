@@ -90,9 +90,9 @@ public class Java5FileItem implements FileItem {
     public FileItem deleteFolder(final String folderName) {
         final File child = getChildUnsafe(folderName);
 
-        // new Exception("try remove " + child).printStackTrace();
+        //new Exception("try remove " + child).printStackTrace();
         if (!child.delete()) {
-            // System.out.println("doneit");
+           // System.out.println("doneit");
             throw new RuntimeException("Folder [" + child + "] could not be deleted.");
         }
 
@@ -131,7 +131,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
