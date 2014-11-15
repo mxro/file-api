@@ -1,6 +1,7 @@
 package de.mxro.file.Jre;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -52,8 +53,12 @@ public class Java5FileItem implements FileItem {
         }
 
         final File newFile = new File(file.getAbsolutePath() + "/" + fileName);
-        if (!newFile.createNewFile()) {
-            throw new RuntimeException("Cannot create file.");
+        try {
+            if (!newFile.createNewFile()) {
+                throw new RuntimeException("Cannot create file.");
+            }
+        } catch (final IOException e) {
+            throw new RuntimeException(e);
         }
 
         return new Java5FileItem(newFile);
