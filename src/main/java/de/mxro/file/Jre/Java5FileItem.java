@@ -7,6 +7,7 @@ import java.util.List;
 
 import de.mxro.file.FileItem;
 import de.mxro.file.internal.NotExistentFileItem;
+import de.mxro.process.Spawn;
 
 public class Java5FileItem implements FileItem {
 
@@ -110,9 +111,14 @@ public class Java5FileItem implements FileItem {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
                                 + "]");
+            } else {
+                return this;
             }
         }
-        return null;
+
+        Spawn.runCommand("attrib -s -h -r " + getName(), file.getParentFile());
+
+        return this;
     }
 
     @Override
