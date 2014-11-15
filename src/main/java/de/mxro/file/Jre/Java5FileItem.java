@@ -95,7 +95,12 @@ public class Java5FileItem implements FileItem {
     @Override
     public String getExtension() {
 
-        return file.g;
+        final int idx = file.getName().lastIndexOf(".");
+        if (idx < 0) {
+            return "";
+        }
+
+        return file.getName().substring(idx + 1);
     }
 
     @Override
