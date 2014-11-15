@@ -122,7 +122,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -165,7 +165,7 @@ public class Java5FileItem implements FileItem {
     @Override
     public String getText() {
         try {
-            final InputStream in;
+            InputStream in = null;
             try {
                 in = new FileInputStream(file);
 
@@ -183,7 +183,9 @@ public class Java5FileItem implements FileItem {
 
                 return new String(b, "UTF-8");
             } finally {
-                in.close();
+                if (in != null) {
+                    in.close();
+                }
             }
 
         } catch (final Exception e) {
