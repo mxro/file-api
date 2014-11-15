@@ -110,7 +110,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -123,8 +123,12 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public boolean getVisible() {
-        // TODO Auto-generated method stub
-        return false;
+        if (!System.getProperty("os.name").startsWith("Windows")) {
+
+            return !getName().startsWith(".");
+        }
+
+        return true;
     }
 
     @Override
