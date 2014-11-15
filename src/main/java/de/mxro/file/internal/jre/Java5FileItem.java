@@ -1,7 +1,9 @@
 package de.mxro.file.internal.jre;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -195,8 +197,23 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem setText(final String text) {
-        // TODO Auto-generated method stub
-        return null;
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(file));
+            writer.write(text);
+
+        } catch (final IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (final IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return this;
     }
 
     public Java5FileItem(final File file) {
