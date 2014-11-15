@@ -9,7 +9,6 @@ public class NotExistentFileItem implements FileItem {
 
     @Override
     public boolean isDirectory() {
-        // TODO Auto-generated method stub
         return false;
     }
 
@@ -71,12 +70,6 @@ public class NotExistentFileItem implements FileItem {
     public boolean getVisible() {
         // TODO Auto-generated method stub
         return false;
-    }
-
-    @Override
-    public FileItem create() {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override

@@ -80,12 +80,6 @@ public class Java5FileItem implements FileItem {
     }
 
     @Override
-    public FileItem create() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public List<FileItem> getChildren() {
         // TODO Auto-generated method stub
         return null;

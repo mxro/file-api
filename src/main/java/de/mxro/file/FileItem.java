@@ -32,8 +32,6 @@ public interface FileItem {
 
     public boolean getVisible();
 
-    public FileItem create();
-
     public List<FileItem> getChildren();
 
     public Date lastModified();
