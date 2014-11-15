@@ -106,6 +106,15 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem setVisible(final boolean isVisible) {
+
+        if (getVisible() == isVisible) {
+            return this;
+        }
+
+        if (!getVisible() && isVisible) {
+            throw new RuntimeException("Making files viisble not supported yet.");
+        }
+
         if (!System.getProperty("os.name").startsWith("Windows")) {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
