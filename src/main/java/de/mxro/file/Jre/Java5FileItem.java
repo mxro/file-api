@@ -38,7 +38,7 @@ public class Java5FileItem implements FileItem {
             throw new RuntimeException("Cannot create folder for file.");
         }
 
-        final File newFolder = new File(file.getAbsolutePath() + "/" + folderName);
+        final File newFolder = getChildUnsafe(folderName);
         if (!newFolder.mkdir()) {
             throw new RuntimeException("Cannot create folder.");
         }
@@ -52,7 +52,7 @@ public class Java5FileItem implements FileItem {
             throw new RuntimeException("Cannot create file for file.");
         }
 
-        final File newFile = new File(file.getAbsolutePath() + "/" + fileName);
+        final File newFile = getChildUnsafe(fileName);
         try {
             if (!newFile.createNewFile()) {
                 throw new RuntimeException("Cannot create file.");
@@ -66,8 +66,7 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem deleteFile(final String fileName) {
-        // TODO Auto-generated method stub
-        return null;
+
     }
 
     @Override
@@ -133,6 +132,10 @@ public class Java5FileItem implements FileItem {
     public Java5FileItem(final File file) {
         super();
         this.file = file;
+    }
+
+    private final File getChildUnsafe(final String name) {
+        return new File(file.getAbsolutePath() + "/" + name);
     }
 
 }
