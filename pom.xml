@@ -26,6 +26,13 @@
 	<!-- Dependent Modules -->
 	<dependencies>
 
+
+		<dependency>
+			<groupId>de.mxro.process</groupId>
+			<artifactId>java-start-process</artifactId>
+			<version>[0.0.1,)</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
