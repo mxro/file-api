@@ -1,7 +1,9 @@
 package de.mxro.file.internal.jre;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -162,7 +164,21 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public String getText() {
-        // TODO Auto-generated method stub
+        final InputStream in = new FileInputStream(file);
+
+        final byte[] b = new byte[(int) file.length()];
+        final int len = b.length;
+        int total = 0;
+
+        while (total < len) {
+            final int result = in.read(b, total, len - total);
+            if (result == -1) {
+                break;
+            }
+            total += result;
+        }
+
+        return new String(b, "UTF-8");
         return null;
     }
 
