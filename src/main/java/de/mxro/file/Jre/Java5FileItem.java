@@ -69,7 +69,7 @@ public class Java5FileItem implements FileItem {
         final File child = getChildUnsafe(fileName);
 
         if (!child.delete()) {
-            throw new RuntimeException("File [" + fileName + "] could not be deleted.");
+            throw new RuntimeException("File [" + child + "] could not be deleted.");
         }
 
         return this;
@@ -78,13 +78,18 @@ public class Java5FileItem implements FileItem {
     @Override
     public FileItem deleteFolder(final String folderName) {
         final File child = getChildUnsafe(folderName);
-        return null;
+
+        if (!child.delete()) {
+            throw new RuntimeException("Folder [" + child + "] could not be deleted.");
+        }
+
+        return this;
     }
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+
+        return file.getName();
     }
 
     @Override
