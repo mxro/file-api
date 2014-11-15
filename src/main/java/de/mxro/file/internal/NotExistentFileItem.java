@@ -90,4 +90,9 @@ public class NotExistentFileItem implements FileItem {
         throw new RuntimeException(ILLEGAL_OPERATION);
     }
 
+    @Override
+    public boolean contains(final String fileName) {
+        throw new RuntimeException(ILLEGAL_ACCESS);
+    }
+
 }
