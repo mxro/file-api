@@ -129,7 +129,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -218,6 +218,14 @@ public class Java5FileItem implements FileItem {
             }
         }
         return this;
+    }
+
+    @Override
+    public boolean contains(final String fileName) {
+        if (!isDirectory()) {
+            throw new RuntimeException(".contains can only be used on folders and not [" + file + "].");
+        }
+        return false;
     }
 
     public Java5FileItem(final File file) {
