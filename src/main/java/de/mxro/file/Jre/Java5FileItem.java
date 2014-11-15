@@ -55,7 +55,7 @@ public class Java5FileItem implements FileItem {
         final File newFile = getChildUnsafe(fileName);
         try {
             if (!newFile.createNewFile()) {
-                throw new RuntimeException("Cannot create file.");
+                throw new RuntimeException("Cannot create file [" + newFile + "].");
             }
         } catch (final IOException e) {
             throw new RuntimeException(e);
@@ -66,7 +66,13 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem deleteFile(final String fileName) {
+        final File child = getChildUnsafe(fileName);
 
+        if (!child.delete()) {
+            throw new RuntimeException("File [" + fileName + "] could not be deleted.");
+        }
+
+        return this;
     }
 
     @Override
