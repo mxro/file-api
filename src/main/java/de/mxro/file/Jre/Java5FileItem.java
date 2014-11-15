@@ -94,8 +94,8 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public String getExtension() {
-        // TODO Auto-generated method stub
-        return null;
+
+        return file.g;
     }
 
     @Override
