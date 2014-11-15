@@ -37,18 +37,26 @@ public class Java5FileItem implements FileItem {
             throw new RuntimeException("Cannot create folder for file.");
         }
 
-        File file2 = new File(file.getAbsolutePath()+"/"+folderName);
-        if (!file2.mkdir()) {
-            throw new RuntimeException("Cannot create folder.")
+        final File newFolder = new File(file.getAbsolutePath() + "/" + folderName);
+        if (!newFolder.mkdir()) {
+            throw new RuntimeException("Cannot create folder.");
         }
 
-        return null;
+        return new Java5FileItem(newFolder);
     }
 
     @Override
     public FileItem createFile(final String fileName) {
-        // TODO Auto-generated method stub
-        return null;
+        if (!isDirectory()) {
+            throw new RuntimeException("Cannot create file for file.");
+        }
+
+        final File newFile = new File(file.getAbsolutePath() + "/" + fileName);
+        if (!newFile.createNewFile()) {
+            throw new RuntimeException("Cannot create file.");
+        }
+
+        return new Java5FileItem(newFile);
     }
 
     @Override
