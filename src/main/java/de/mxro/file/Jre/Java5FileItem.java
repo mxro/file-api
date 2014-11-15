@@ -2,6 +2,7 @@ package de.mxro.file.Jre;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -119,7 +120,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -137,8 +138,12 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public List<FileItem> getChildren() {
-        // TODO Auto-generated method stub
-        return null;
+        final File[] listFiles = file.listFiles();
+        final List<FileItem> res = new ArrayList<FileItem>(listFiles.length);
+        for (final File f : listFiles) {
+            res.add(new Java5FileItem(f));
+        }
+        return res;
     }
 
     @Override
