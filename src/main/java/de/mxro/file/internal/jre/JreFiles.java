@@ -1,4 +1,4 @@
-package de.mxro.file.Jre;
+package de.mxro.file.internal.jre;
 
 import java.io.InputStream;
 

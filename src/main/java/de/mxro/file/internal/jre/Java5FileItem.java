@@ -1,4 +1,4 @@
-package de.mxro.file.Jre;
+package de.mxro.file.internal.jre;
 
 import java.io.File;
 import java.io.IOException;
@@ -120,7 +120,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                        + "]");
+                                + "]");
             } else {
                 return this;
             }
@@ -154,7 +154,11 @@ public class Java5FileItem implements FileItem {
     @Override
     public String hash() {
 
-        return Md5.getMD5Checksum(file);
+        try {
+            return Md5.getMD5Checksum(file);
+        } catch (final Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
