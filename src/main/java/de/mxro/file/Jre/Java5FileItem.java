@@ -105,7 +105,13 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem setVisible(final boolean isVisible) {
-        // TODO Auto-generated method stub
+        if (!System.getProperty("os.name").startsWith("Windows")) {
+            if (!getName().startsWith(".")) {
+                throw new RuntimeException(
+                        "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
+                                + "]");
+            }
+        }
         return null;
     }
 
