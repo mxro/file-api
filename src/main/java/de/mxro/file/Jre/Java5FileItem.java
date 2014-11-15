@@ -35,12 +35,12 @@ public class Java5FileItem implements FileItem {
     @Override
     public FileItem assertFolder(final String folderName) {
         if (!isDirectory()) {
-            throw new RuntimeException("Cannot create folder for file.");
+            throw new RuntimeException("Cannot create folder for file [" + file + "].");
         }
 
         final File newFolder = getChildUnsafe(folderName);
         if (!newFolder.mkdir()) {
-            throw new RuntimeException("Cannot create folder.");
+            throw new RuntimeException("Cannot create folder [" + newFolder + "].");
         }
 
         return new Java5FileItem(newFolder);
@@ -49,7 +49,7 @@ public class Java5FileItem implements FileItem {
     @Override
     public FileItem createFile(final String fileName) {
         if (!isDirectory()) {
-            throw new RuntimeException("Cannot create file for file.");
+            throw new RuntimeException("Cannot create file for file [" + file + "].");
         }
 
         final File newFile = getChildUnsafe(fileName);
@@ -77,7 +77,7 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem deleteFolder(final String folderName) {
-        // TODO Auto-generated method stub
+        final File child = getChildUnsafe(folderName);
         return null;
     }
 
