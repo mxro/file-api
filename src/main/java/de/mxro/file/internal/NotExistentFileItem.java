@@ -21,7 +21,7 @@ public class NotExistentFileItem implements FileItem {
     }
 
     @Override
-    public FileItem getChild(final String childName) {
+    public FileItem get(final String childName) {
         throw new RuntimeException(ILLEGAL_ACCESS);
     }
 

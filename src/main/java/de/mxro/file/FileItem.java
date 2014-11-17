@@ -9,7 +9,7 @@ public interface FileItem {
 
     public boolean exists();
 
-    public FileItem getChild(String childName);
+    public FileItem get(String childName);
 
     public FileItem assertFolder(String folderName);
 

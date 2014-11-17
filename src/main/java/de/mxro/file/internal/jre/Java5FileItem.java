@@ -29,7 +29,7 @@ public class Java5FileItem implements FileItem {
     }
 
     @Override
-    public FileItem getChild(final String childName) {
+    public FileItem get(final String childName) {
         for (final File child : file.listFiles()) {
             if (child.getName().equals(childName)) {
                 return new Java5FileItem(child);
