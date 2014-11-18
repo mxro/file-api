@@ -17,3 +17,4 @@ Using the FileItem class is infinitely more convenient than using the standard J
     FileItem file = FilesJre.wrap(new File("/tmp"))
     
     file.assertFolder("a Folder").createFile("my file.txt").setText("The content")
+    
