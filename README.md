@@ -5,3 +5,12 @@ file-api
 ========
 
 An abstract, cross-platform API for working with files and folders.
+
+### Motivation
+
+This is a very lightweight abstraction on top of vanilla java.io.File. Adding this project as a dependency to your projects should come with very little risk.
+
+Using the FileItem class is infinitely more convenient than using the standard Java classes for many use cases.
+
+### Usages
+
