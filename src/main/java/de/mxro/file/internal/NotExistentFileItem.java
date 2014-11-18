@@ -95,4 +95,9 @@ public class NotExistentFileItem implements FileItem {
         throw new RuntimeException(ILLEGAL_ACCESS);
     }
 
+    @Override
+    public String getPath() {
+        throw new RuntimeException(ILLEGAL_ACCESS);
+    }
+
 }

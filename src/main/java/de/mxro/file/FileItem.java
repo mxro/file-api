@@ -45,6 +45,8 @@ public interface FileItem {
      */
     public String getText();
 
+    public String getPath();
+
     public FileItem setText(String text);
 
     /**
