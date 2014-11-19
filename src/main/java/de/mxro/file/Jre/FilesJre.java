@@ -11,4 +11,8 @@ public final class FilesJre {
         return new Java5FileItem(file);
     }
 
+    public static final FileItem create(final String path) {
+        return wrap(new File(path));
+    }
+
 }
