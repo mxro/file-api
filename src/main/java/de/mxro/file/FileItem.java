@@ -13,6 +13,8 @@ public interface FileItem {
 
     public FileItem assertFolder(String folderName);
 
+    public FileItem assertFile(String fileName);
+
     public FileItem createFile(String fileName);
 
     public FileItem deleteFile(String fileName);

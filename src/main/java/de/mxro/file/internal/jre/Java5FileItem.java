@@ -284,4 +284,14 @@ public class Java5FileItem implements FileItem {
         return file.getAbsolutePath();
     }
 
+    @Override
+    public FileItem assertFile(final String fileName) {
+        final FileItem item = get(fileName);
+        if (item.exists()) {
+            return item;
+        }
+
+        return createFile(fileName);
+    }
+
 }

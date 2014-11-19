@@ -100,4 +100,9 @@ public class NotExistentFileItem implements FileItem {
         throw new RuntimeException(ILLEGAL_ACCESS);
     }
 
+    @Override
+    public FileItem assertFile(final String fileName) {
+        throw new RuntimeException(ILLEGAL_OPERATION);
+    }
+
 }
