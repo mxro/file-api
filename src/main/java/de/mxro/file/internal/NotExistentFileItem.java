@@ -105,4 +105,14 @@ public class NotExistentFileItem implements FileItem {
         throw new RuntimeException(ILLEGAL_OPERATION);
     }
 
+    @Override
+    public FileItem empty() {
+        throw new RuntimeException(ILLEGAL_OPERATION);
+    }
+
+    @Override
+    public boolean getIsLink() {
+        throw new RuntimeException(ILLEGAL_ACCESS);
+    }
+
 }
