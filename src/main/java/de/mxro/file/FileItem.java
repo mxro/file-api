@@ -22,6 +22,13 @@ public interface FileItem {
     public FileItem deleteFolder(String folderName);
 
     /**
+     * Removes all files and folders within this FileItem.
+     * 
+     * @return
+     */
+    public FileItem empty();
+
+    /**
      * Returns the file name inclusive the extension.
      * 
      * @return
