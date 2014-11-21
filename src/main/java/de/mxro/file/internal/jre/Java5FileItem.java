@@ -90,6 +90,8 @@ public class Java5FileItem implements FileItem {
     public FileItem deleteFolder(final String folderName) {
         final File child = getChildUnsafe(folderName);
 
+        System.out.println("DELETEING " + folderName);
+
         if (!child.exists()) {
             throw new IllegalArgumentException("Folder [" + child + "] cannot be deleted since it doesn't exist.");
         }
@@ -110,10 +112,15 @@ public class Java5FileItem implements FileItem {
     public FileItem empty() {
 
         for (final FileItem child : this.getChildren()) {
+            if (child.isDirectory()) {
+                deleteFolder(child.getName());
+            } else {
+                deleteFile(child.getName());
+            }
 
         }
 
-        return null;
+        return this;
     }
 
     @Override
