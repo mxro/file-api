@@ -95,7 +95,7 @@ public class Java5FileItem implements FileItem {
         }
 
         if (!getIsLink()) {
-            child.empty();
+            new Java5FileItem(child).empty();
         }
 
         if (!child.delete()) {
@@ -108,7 +108,11 @@ public class Java5FileItem implements FileItem {
 
     @Override
     public FileItem empty() {
-        // TODO Auto-generated method stub
+
+        for (final FileItem child : this.getChildren()) {
+
+        }
+
         return null;
     }
 
