@@ -134,7 +134,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                        + "]");
+                                + "]");
             } else {
                 return this;
             }
@@ -297,6 +297,70 @@ public class Java5FileItem implements FileItem {
         }
 
         return createFile(fileName);
+    }
+
+    @Override
+    public boolean getIsLink() {
+
+        try {
+            return isSymlink(file);
+        } catch (final IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public FileItem empty() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * based on method from Apache Commons IO under Apache 2 license:
+     * http://commons
+     * .apache.org/proper/commons-io/xref/org/apache/commons/io/FileUtils.html
+     * 
+     * Determines whether the specified file is a Symbolic Link rather than an
+     * actual file.
+     * <p>
+     * Will not return true if there is a Symbolic Link anywhere in the path,
+     * only if the specific file is.
+     * <p>
+     * <b>Note:</b> the current implementation always returns {@code false} if
+     * the system is detected as Windows using
+     * {@link FilenameUtils#isSystemWindows()}
+     * <p>
+     * For code that runs on Java 1.7 or later, use the following method
+     * instead: <br>
+     * {@code boolean java.nio.file.Files.isSymbolicLink(Path path)}
+     * 
+     * @param file
+     *            the file to check
+     * @return true if the file is a Symbolic Link
+     * @throws IOException
+     *             if an IO error occurs while checking the file
+     * @since 2.0
+     */
+    private final static boolean isSymlink(final File file) throws IOException {
+        if (file == null) {
+            throw new NullPointerException("File must not be null");
+        }
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            return false;
+        }
+        File fileInCanonicalDir = null;
+        if (file.getParent() == null) {
+            fileInCanonicalDir = file;
+        } else {
+            final File canonicalDir = file.getParentFile().getCanonicalFile();
+            fileInCanonicalDir = new File(canonicalDir, file.getName());
+        }
+
+        if (fileInCanonicalDir.getCanonicalFile().equals(fileInCanonicalDir.getAbsoluteFile())) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
