@@ -34,6 +34,8 @@ public interface FileItem {
 
     public boolean getVisible();
 
+    public boolean getIsLink();
+
     public List<FileItem> getChildren();
 
     public Date lastModified();
