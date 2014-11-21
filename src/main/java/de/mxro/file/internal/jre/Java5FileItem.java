@@ -94,12 +94,22 @@ public class Java5FileItem implements FileItem {
             throw new IllegalArgumentException("Folder [" + child + "] cannot be deleted since it doesn't exist.");
         }
 
+        if (!getIsLink()) {
+            child.empty();
+        }
+
         if (!child.delete()) {
 
             throw new RuntimeException("Folder [" + child + "] could not be deleted.");
         }
 
         return this;
+    }
+
+    @Override
+    public FileItem empty() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
@@ -134,7 +144,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -307,12 +317,6 @@ public class Java5FileItem implements FileItem {
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public FileItem empty() {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     /**
