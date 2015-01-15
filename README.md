@@ -39,7 +39,7 @@ boolean there = file.get("tmp").get("my file.txt").exists();
 
 ### More Operations
 
-
+For more operations check the JavaDoc of [FileItem](http://modules.appjangle.com/file-api/latest/apidocs/de/mxro/file/FileItem.html).
 
 ## Maven Dependency
 
