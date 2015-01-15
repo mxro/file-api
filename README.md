@@ -26,7 +26,15 @@ FileItem file = FilesJre.wrap(new File("/tmp/my file.txt"));
 
 String content = file.getText();
 
-System.out.println("content");
+System.out.println(content);
+```
+
+### Traversing through Directories
+
+```java
+FileItem file = FilesJre.wrap(new File("/"));
+
+boolean there = file.get("tmp").get("my file.txt").exists();
 ```
 
 ### More Operations
