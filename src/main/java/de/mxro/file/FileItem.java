@@ -43,10 +43,33 @@ public interface FileItem {
      */
     public FileItem assertFolder(String folderName);
 
+    /**
+     * <p>
+     * Creates a file with the specified name as child of this file item if the
+     * file doesn't exist.
+     * 
+     * @param fileName
+     *            The name of the file to be asserted.
+     * @return The created or retrieved file.
+     */
     public FileItem assertFile(String fileName);
 
+    /**
+     * Creates a new file with the specified name as child of this item.
+     * 
+     * @param fileName
+     *            The name of the file to be created.
+     * @return The newly created file item.
+     */
     public FileItem createFile(String fileName);
 
+    /**
+     * Deletes the file with the specified name.
+     * 
+     * @param fileName
+     *            The name of the child of this item to be deleted.
+     * @return This FileItem.
+     */
     public FileItem deleteFile(String fileName);
 
     public FileItem deleteFolder(String folderName);
