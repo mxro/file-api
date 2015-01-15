@@ -155,14 +155,30 @@ public interface FileItem {
     public String hash();
 
     /**
-     * Returns the UTF-8 text content of this file.
+     * Reads the contents of the file and converts them into a String based on
+     * UTF-8 encoding.
      * 
-     * @return
+     * @return The UTF-8 text content of this file
      */
     public String getText();
 
+    /**
+     * The full, absolute path of this file.
+     * 
+     * @return The path of this file.
+     */
     public String getPath();
 
+    /**
+     * <p>
+     * Replaces the current contents of the file with the specified text.
+     * <p>
+     * Uses UTF-8 Encoding
+     * 
+     * @param text
+     *            The text to be used as file contents.
+     * @return This FileItem.
+     */
     public FileItem setText(String text);
 
     /**
