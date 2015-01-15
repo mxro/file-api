@@ -18,7 +18,14 @@ public interface FileItem {
     public boolean exists();
 
     /**
+     * <p>
      * To retrieve a child file or folder with a specific name.
+     * <p>
+     * <b>Usage</b>
+     * 
+     * <pre>
+     * root.get(&quot;folder&quot;).get(&quot;file.txt&quot;);
+     * </pre>
      * 
      * @param childName
      * @return

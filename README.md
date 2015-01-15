@@ -18,6 +18,21 @@ FileItem file = FilesJre.wrap(new File("/tmp"))
 file.assertFolder("a Folder").createFile("my file.txt").setText("The content")
 ```
 
+
+### Reading File Contents as String
+
+```java
+FileItem file = FilesJre.wrap(new File("/tmp/my file.txt"));
+
+String content = file.getText();
+
+System.out.println("content");
+```
+
+### More Operations
+
+
+
 ## Maven Dependency
 
 ```xml
@@ -52,11 +67,10 @@ This project is compatible with the following environments:
 
 ## Further Resources
 
-- [JavaDocs](http://modules.appjangle.com/java-json/latest/apidocs/)
-- [Project Reports](http://modules.appjangle.com/java-json/latest/project-reports.html)
-- [Documentation with TOC](http://documentup.com/mxro/java-json)
-- [ReadTheDocs](http://java-json.readthedocs.org/en/latest/)
+- [JavaDocs](http://modules.appjangle.com/file-api/latest/apidocs/)
+- [Project Reports](http://modules.appjangle.com/file-api/latest/project-reports.html)
+- [Documentation with TOC](http://documentup.com/mxro/file-api)
+- [ReadTheDocs](http://file-api.readthedocs.org/en/latest/)
 
-[![Documentation Status](https://readthedocs.org/projects/java-json/badge/?version=latest)](https://readthedocs.org/projects/java-json/?badge=latest)
 
     
