@@ -1,20 +1,62 @@
 [![Build Status](https://travis-ci.org/mxro/file-api.svg?branch=master)](https://travis-ci.org/mxro/file-api)
 
-
-file-api
-========
+# file-api
 
 An abstract, cross-platform API for working with files and folders.
 
-### Motivation
-
-This is a very lightweight abstraction on top of vanilla java.io.File. Adding this project as a dependency to your projects should come with very little risk.
-
+**Why** This is a very lightweight abstraction on top of vanilla java.io.File. 
+Adding this project as a dependency to your projects should come with very little risk.
 Using the FileItem class is infinitely more convenient than using the standard Java classes for many use cases.
 
-### Usages
+## Usage
 
-    FileItem file = FilesJre.wrap(new File("/tmp"))
+### Creating a New File And Setting Its Contents
+
+```java
+FileItem file = FilesJre.wrap(new File("/tmp"))
     
-    file.assertFolder("a Folder").createFile("my file.txt").setText("The content")
+file.assertFolder("a Folder").createFile("my file.txt").setText("The content")
+```
+
+## Maven Dependency
+
+```xml
+<dependency>
+    <groupId>de.mxro.file</groupId>
+	<artifactId>file-api</artifactId>
+	<version>[latest version]</version>
+</dependency>
+```
+
+Find latest version [here](http://modules.appjangle.com/file-api/latest/project-summary.html).
+
+Add repository if required:
+
+```xml
+<repositories>
+	<repository>
+		<id>Appjangle Releases</id>
+		<url>http://maven.appjangle.com/appjangle/releases</url>
+	</repository>
+</repositories>
+```
+
+## Compatibility
+
+This project is compatible with the following environments:
+
+- Java 1.6+
+- GWT 2.5.0+
+- Android (any)
+- OSGi (any)
+
+## Further Resources
+
+- [JavaDocs](http://modules.appjangle.com/java-json/latest/apidocs/)
+- [Project Reports](http://modules.appjangle.com/java-json/latest/project-reports.html)
+- [Documentation with TOC](http://documentup.com/mxro/java-json)
+- [ReadTheDocs](http://java-json.readthedocs.org/en/latest/)
+
+[![Documentation Status](https://readthedocs.org/projects/java-json/badge/?version=latest)](https://readthedocs.org/projects/java-json/?badge=latest)
+
     

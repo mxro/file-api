@@ -5,10 +5,24 @@ import java.util.List;
 
 public interface FileItem {
 
+    /**
+     * 
+     * @return <code>true</code> if this item is a directory.
+     */
     public boolean isDirectory();
 
+    /**
+     * 
+     * @return <code>true</code> if this item exists.
+     */
     public boolean exists();
 
+    /**
+     * To retrieve a child file or folder with a specific name.
+     * 
+     * @param childName
+     * @return
+     */
     public FileItem get(String childName);
 
     public FileItem assertFolder(String folderName);
