@@ -122,14 +122,29 @@ public interface FileItem {
     /**
      * Determines the visibility of this item.
      * 
-     * @return
+     * @return <code>true</code> if this item is visible
      */
     public boolean getVisible();
 
+    /**
+     * Determines if this item is a link.
+     * 
+     * @return <code>true</code> if the item is a link.
+     */
     public boolean getIsLink();
 
+    /**
+     * Determines the list of files and folders which are children of this item.
+     * 
+     * @return List of files and folders being direct children of this item.
+     */
     public List<FileItem> getChildren();
 
+    /**
+     * Determines when this item has last been modified.
+     * 
+     * @return
+     */
     public Date lastModified();
 
     public String hash();
