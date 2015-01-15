@@ -64,7 +64,10 @@ public interface FileItem {
     public FileItem createFile(String fileName);
 
     /**
+     * <p>
      * Deletes the file with the specified name.
+     * <p>
+     * Throws a runtime exception if the specified file doesn't exist.
      * 
      * @param fileName
      *            The name of the child of this item to be deleted.
@@ -72,6 +75,11 @@ public interface FileItem {
      */
     public FileItem deleteFile(String fileName);
 
+    /**
+     * 
+     * @param folderName
+     * @return
+     */
     public FileItem deleteFolder(String folderName);
 
     /**
