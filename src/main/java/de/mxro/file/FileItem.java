@@ -32,6 +32,15 @@ public interface FileItem {
      */
     public FileItem get(String childName);
 
+    /**
+     * <p>
+     * Creates a folder with the specified name as child of this file item if
+     * the folder doesn't exist.
+     * 
+     * @param folderName
+     *            The name of the folder to be asserted.
+     * @return The created or retrieved folder.
+     */
     public FileItem assertFolder(String folderName);
 
     public FileItem assertFile(String fileName);
