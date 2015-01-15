@@ -76,9 +76,15 @@ public interface FileItem {
     public FileItem deleteFile(String fileName);
 
     /**
+     * <p>
+     * Deletes the folder with the specified name.
+     * <p>
+     * <b>Note:</b> This operation will recursively delete the contents of the
+     * folder (ignoring links).
      * 
      * @param folderName
-     * @return
+     *            The name of the folder to be deleted.
+     * @return This FileTiem.
      */
     public FileItem deleteFolder(String folderName);
 
@@ -92,7 +98,7 @@ public interface FileItem {
     /**
      * Returns the file name inclusive the extension.
      * 
-     * @return
+     * @return The name of this item.
      */
     public String getName();
 
