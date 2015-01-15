@@ -109,8 +109,21 @@ public interface FileItem {
      */
     public String getExtension();
 
+    /**
+     * Sets the visibility of this item.
+     * 
+     * @param isVisible
+     *            <code>true</code> if the item should be visible,
+     *            <code>false</code> if the item should be hidden.
+     * @return This FileItem.
+     */
     public FileItem setVisible(boolean isVisible);
 
+    /**
+     * Determines the visibility of this item.
+     * 
+     * @return
+     */
     public boolean getVisible();
 
     public boolean getIsLink();
