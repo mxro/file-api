@@ -102,6 +102,11 @@ public interface FileItem {
      */
     public String getName();
 
+    /**
+     * Determines the extension (after the .) for this item.
+     * 
+     * @return The extension for this item.
+     */
     public String getExtension();
 
     public FileItem setVisible(boolean isVisible);
