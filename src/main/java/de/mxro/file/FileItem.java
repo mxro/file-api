@@ -143,10 +143,15 @@ public interface FileItem {
     /**
      * Determines when this item has last been modified.
      * 
-     * @return
+     * @return The date when the file was last modified.
      */
     public Date lastModified();
 
+    /**
+     * Determines a hash for this item.
+     * 
+     * @return
+     */
     public String hash();
 
     /**
