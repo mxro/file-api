@@ -186,7 +186,8 @@ public interface FileItem {
      * name.
      * 
      * @param fileName
-     * @return
+     *            The name of the child.
+     * @return <code>true</code> If a child with the specified name exists.
      */
     public boolean contains(String fileName);
 
