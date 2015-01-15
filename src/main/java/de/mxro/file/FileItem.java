@@ -3,6 +3,16 @@ package de.mxro.file;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * <p>
+ * An interface for interacting with files and folder.
+ * <p>
+ * For usage examples the <a href='https://github.com/mxro/file-api'>project
+ * page</a>
+ * 
+ * @author <a href="http://www.mxro.de">Max Rohde</a>
+ *
+ */
 public interface FileItem {
 
     /**
