@@ -43,15 +43,20 @@ public interface FileItem {
     public FileItem get(String childName);
 
     /**
-     * Returns the first instance of a child element which matches the specified
-     * regular expression.
+     * Returns the child element which matches the specified regular expression.
      * 
-     * @param pattern
+     * @param regex
      * @return
      */
-    public FileItem find(String pattern);
+    public FileItem find(String regex);
 
-    public FileItem findAll(String pattern);
+    /**
+     * Returns all child elements which matche the specified regular expression.
+     * 
+     * @param regex
+     * @return
+     */
+    public List<FileItem> findAll(String regex);
 
     /**
      * <p>
@@ -153,6 +158,21 @@ public interface FileItem {
      * @return <code>true</code> if the item is a link.
      */
     public boolean getIsLink();
+
+    /**
+     * <p>
+     * If destination is a folder, create a copy of this FileItem in the
+     * specified folder.
+     * <p>
+     * If destination is a file, override specified file with the contents of
+     * this FileItem.
+     * <p>
+     * If file exists, it will be overwritten.
+     * 
+     * @param destination
+     * @return
+     */
+    public FileItem copyTo(FileItem destination);
 
     /**
      * Determines the list of files and folders which are children of this item.

@@ -3,9 +3,11 @@ package de.mxro.file.internal.jre;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +38,29 @@ public class Java5FileItem implements FileItem {
             }
         }
         return new NotExistentFileItem();
+    }
+
+    @Override
+    public FileItem find(final String pattern) {
+        for (final File child : file.listFiles()) {
+            if (child.getName().matches(pattern)) {
+                return new Java5FileItem(child);
+            }
+        }
+        return new NotExistentFileItem();
+    }
+
+    @Override
+    public List<FileItem> findAll(final String pattern) {
+        final List<FileItem> list = new ArrayList<FileItem>(0);
+
+        for (final File child : file.listFiles()) {
+            if (child.getName().matches(pattern)) {
+                list.add(new Java5FileItem(child));
+            }
+        }
+
+        return list;
     }
 
     @Override
@@ -153,7 +178,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                                + "]");
+                        + "]");
             } else {
                 return this;
             }
@@ -373,6 +398,110 @@ public class Java5FileItem implements FileItem {
             return false;
         } else {
             return true;
+        }
+    }
+
+    @Override
+    public FileItem copyTo(final FileItem destination) {
+        if (this.isDirectory()) {
+            throw new IllegalStateException("Not supported for directories yet.");
+        }
+        FileItem destFile;
+        if (destination.isDirectory()) {
+            destFile = destination.assertFile(this.getName());
+        } else {
+            destFile = destination;
+        }
+
+        final File destFileRaw = ((Java5FileItem) destFile).file;
+
+        try {
+
+            if (!destFile.exists()) {
+                destFileRaw.createNewFile();
+            }
+
+            doCopyFile(this.file, destFileRaw, true);
+
+        } catch (final IOException e) {
+            throw new RuntimeException(e);
+        }
+        return destFile;
+    }
+
+    private static final long FILE_COPY_BUFFER_SIZE = 1024 * 1000 * 30;
+
+    /**
+     * based on method from Apache Commons IO under Apache 2 license:
+     * http://commons
+     * .apache.org/proper/commons-io/xref/org/apache/commons/io/FileUtils.html
+     * 
+     * Internal copy file method. This caches the original file length, and
+     * throws an IOException if the output file length is different from the
+     * current input file length. So it may fail if the file changes size. It
+     * may also fail with "IllegalArgumentException: Negative size" if the input
+     * file is truncated part way through copying the data and the new file size
+     * is less than the current position.
+     *
+     * @param srcFile
+     *            the validated source file, must not be {@code null}
+     * @param destFile
+     *            the validated destination file, must not be {@code null}
+     * @param preserveFileDate
+     *            whether to preserve the file date
+     * @throws IOException
+     *             if an error occurs
+     * @throws IOException
+     *             if the output file length is not the same as the input file
+     *             length after the copy completes
+     * @throws IllegalArgumentException
+     *             "Negative size" if the file is truncated so that the size is
+     *             less than the position
+     */
+    private static void doCopyFile(final File srcFile, final File destFile, final boolean preserveFileDate)
+            throws IOException {
+        if (destFile.exists() && destFile.isDirectory()) {
+            throw new IOException("Destination '" + destFile + "' exists but is a directory");
+        }
+
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        FileChannel input = null;
+        FileChannel output = null;
+        try {
+            fis = new FileInputStream(srcFile);
+            fos = new FileOutputStream(destFile);
+            input = fis.getChannel();
+            output = fos.getChannel();
+            final long size = input.size(); // TODO See IO-386
+            long pos = 0;
+            long count = 0;
+            while (pos < size) {
+                final long remain = size - pos;
+                count = remain > FILE_COPY_BUFFER_SIZE ? FILE_COPY_BUFFER_SIZE : remain;
+                final long bytesCopied = output.transferFrom(input, pos, count);
+                if (bytesCopied == 0) { // IO-385 - can happen if file is
+                    // truncated after caching the size
+                    break; // ensure we don't loop forever
+                }
+                pos += bytesCopied;
+            }
+        } finally {
+            output.close();
+            fos.close();
+            input.close();
+            fis.close();
+
+        }
+
+        final long srcLen = srcFile.length(); // TODO See IO-386
+        final long dstLen = destFile.length(); // TODO See IO-386
+        if (srcLen != dstLen) {
+            throw new IOException("Failed to copy full contents from '" + srcFile + "' to '" + destFile
+                    + "' Expected length: " + srcLen + " Actual: " + dstLen);
+        }
+        if (preserveFileDate) {
+            destFile.setLastModified(srcFile.lastModified());
         }
     }
 

@@ -115,4 +115,19 @@ public class NotExistentFileItem implements FileItem {
         throw new RuntimeException(ILLEGAL_ACCESS);
     }
 
+    @Override
+    public FileItem find(final String pattern) {
+        throw new RuntimeException(ILLEGAL_OPERATION);
+    }
+
+    @Override
+    public List<FileItem> findAll(final String pattern) {
+        throw new RuntimeException(ILLEGAL_OPERATION);
+    }
+
+    @Override
+    public FileItem copyTo(final FileItem destination) {
+        throw new RuntimeException(ILLEGAL_OPERATION);
+    }
+
 }
