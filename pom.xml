@@ -9,7 +9,6 @@
 		<module.gwtVersion>2.5.1</module.gwtVersion>
 		<module.draftCompile>true</module.draftCompile>
 		<module.importedPackages>
-
 			*
 		</module.importedPackages>
 		<module.exportedPackages>
@@ -23,18 +22,11 @@
 	<!-- Dependent Modules -->
 	<dependencies>
 
-
 		<dependency>
 			<groupId>de.mxro.process</groupId>
 			<artifactId>java-start-process</artifactId>
 			<version>0.1.1</version>
 		</dependency>
-		
-		<!-- <dependency>
-			<groupId>de.mxro.tree</groupId>
-			<artifactId>tree-api</artifactId>
-			<version>[0.0.1,)</version>
-		</dependency> -->
 		
 		<dependency>
 			<groupId>junit</groupId>
