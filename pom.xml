@@ -4,6 +4,7 @@
 	<version>0.0.7</version>
 	<description>An abstract, cross-platform API for managing files.
 	</description>
+	
 	<properties>
 		<module.gwtVersion>2.5.1</module.gwtVersion>
 		<module.draftCompile>true</module.draftCompile>
