@@ -43,6 +43,17 @@ public interface FileItem {
     public FileItem get(String childName);
 
     /**
+     * Returns the first instance of a child element which matches the specified
+     * regular expression.
+     * 
+     * @param pattern
+     * @return
+     */
+    public FileItem find(String pattern);
+
+    public FileItem findAll(String pattern);
+
+    /**
      * <p>
      * Creates a folder with the specified name as child of this file item if
      * the folder doesn't exist.
