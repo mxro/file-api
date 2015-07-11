@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import de.mxro.file.FileItem;
+import de.mxro.file.Jre.FilesJre;
 import de.mxro.file.internal.NotExistentFileItem;
 import de.mxro.process.Spawn;
 
@@ -178,7 +179,7 @@ public class Java5FileItem implements FileItem {
             if (!getName().startsWith(".")) {
                 throw new RuntimeException(
                         "Cannot make file invisible on UNIX with a name that doesn't start with '.' for file [" + file
-                        + "]");
+                                + "]");
             } else {
                 return this;
             }
@@ -503,6 +504,12 @@ public class Java5FileItem implements FileItem {
         if (preserveFileDate) {
             destFile.setLastModified(srcFile.lastModified());
         }
+    }
+
+    @Override
+    public FileItem getParent() {
+
+        return new Java5FileItem(new File(this.file.getParent()));
     }
 
 }

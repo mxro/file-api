@@ -130,4 +130,9 @@ public class NotExistentFileItem implements FileItem {
         throw new RuntimeException(ILLEGAL_OPERATION);
     }
 
+    @Override
+    public FileItem getParent() {
+        throw new RuntimeException(ILLEGAL_ACCESS);
+    }
+
 }
