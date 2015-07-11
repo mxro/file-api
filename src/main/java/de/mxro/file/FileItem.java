@@ -7,8 +7,8 @@ import java.util.List;
  * <p>
  * An interface for interacting with files and folder.
  * <p>
- * For usage examples the <a href='https://github.com/mxro/file-api'>project
- * page</a>
+ * For usage examples the
+ * <a href='https://github.com/mxro/file-api'>project page</a>
  * 
  * @author <a href="http://www.mxro.de">Max Rohde</a>
  *
@@ -180,6 +180,18 @@ public interface FileItem {
      * @return List of files and folders being direct children of this item.
      */
     public List<FileItem> getChildren();
+
+    /**
+     * <p>
+     * Determines the parten directory of this item.
+     * <p>
+     * If this item is a file, it will be the directory it is contained in.
+     * <p>
+     * If this item is a directory, it will be its parent directory.
+     * 
+     * @return
+     */
+    public FileItem getParent();
 
     /**
      * Determines when this item has last been modified.
