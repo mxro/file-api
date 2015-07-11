@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 
 import de.mxro.file.FileItem;
-import de.mxro.file.Jre.FilesJre;
 import de.mxro.file.internal.NotExistentFileItem;
 import de.mxro.process.Spawn;
 
@@ -509,7 +508,12 @@ public class Java5FileItem implements FileItem {
     @Override
     public FileItem getParent() {
 
-        return new Java5FileItem(new File(this.file.getParent()));
+        final File parent = new File(this.file.getParent());
+        if (!parent.exists()) {
+            return new NotExistentFileItem();
+        }
+
+        return new Java5FileItem(parent);
     }
 
 }
