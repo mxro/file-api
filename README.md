@@ -1,3 +1,8 @@
+# MOVED
+
+This project has moved to [javadelight/delight-files](https://github.com/javadelight/delight-files) and is now part of the [Java Delight Suite](http://javadelight.org).
+
+
 [![Build Status](https://travis-ci.org/mxro/file-api.svg?branch=master)](https://travis-ci.org/mxro/file-api)
 
 # File API
